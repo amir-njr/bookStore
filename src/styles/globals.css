@@ -20,3 +20,10 @@ a {
   font-family: Yekan;
   src: url('../font/Yekan.ttf');
 }
+@layer components {
+  .titr {
+    @apply text-4xl
+  }
+  
+ 
+}
