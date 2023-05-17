@@ -18,12 +18,17 @@ a {
 }
 @font-face {
   font-family: Yekan;
-  src: url('../font/Yekan.ttf');
+  src: url("../font/Yekan.ttf");
 }
 @layer components {
   .titr {
-    @apply text-4xl
+    @apply text-4xl;
   }
-  
- 
+  .bgLogin {
+    background: radial-gradient(
+      circle,
+      rgba(84, 93, 238, 1) 0%,
+      rgba(146, 182, 224, 1) 100%
+    );
+  }
 }
