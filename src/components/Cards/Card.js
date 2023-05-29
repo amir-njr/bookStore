@@ -1,8 +1,9 @@
 import { useAtom } from "jotai";
 import { Setting } from "../../../lib/atom";
+import Link from "next/link";
 export default function Card(props) {
   const [setting, seSetting] = useAtom(Setting);
-  const { title, price, image } = props;
+  const { title, price, image , id } = props;
   const name = title.split(" ");
 
   return (
@@ -71,6 +72,7 @@ export default function Card(props) {
 
           <span className="bg-orange-400 p-2 rounded-xl">{price}</span>
         </div>
+        <Link href={`/${id}`}>دیدن جزئیات</Link>
       </div>
     </div>
   );
