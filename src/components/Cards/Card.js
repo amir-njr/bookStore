@@ -33,7 +33,7 @@ export default function Card({ bookData }) {
 				</div>
 				<Link
 					className="w-full text-center bg-purple-600 text-white py-2 rounded-md"
-					href={`/${id}`}
+					href={`/detail/${id}`}
 				>
 					دیدن جزئیات
 				</Link>

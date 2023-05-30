@@ -1,6 +1,6 @@
 const bookData = [
   {
-    id: 1,
+    id: "1",
     title: "Snowflake: The Definitive Guide",
     subtitle:
       "Architecting, Designing, and Deploying on the Snowflake Data Cloud",
