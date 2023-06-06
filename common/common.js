@@ -1,12 +1,12 @@
 import { atom } from "jotai";
-export const basketData = atom({
+const basketData = atom({
 	selectedItem: [],
 	counter: 0,
 });
 
 const checkExistInArray = (myarray, needle) => {
 	// console.log("MY ARRAY : ", myarray);
-	console.log("MY needle : ", needle);
+	// console.log("MY needle : ", needle);
 	return myarray.map((item) => {
 		if (item.id === needle) {
 			return true;
@@ -43,4 +43,4 @@ const basketHandller = async ({ action }) => {
 	}
 };
 
-export { basketHandller, checkExistInArray };
+export { basketHandller, checkExistInArray, basketData };

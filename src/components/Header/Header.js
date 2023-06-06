@@ -73,7 +73,7 @@ export default function Header() {
               <span className="h-4 w-4  bg-ghaleb-blue absolute top-3 right-2 flex justify-center items-center rounded-full">
                 {basket.counter}
               </span>
-              <Link href="#" className="flex flex-col items-center gap-2">
+              <Link href="/basket" className="flex flex-col items-center gap-2">
                 <Basket />
 
                 <span className="text-black">سبد خرید</span>
@@ -81,9 +81,10 @@ export default function Header() {
             </div>
 
             <div className="">
-              <Link href="#" className="flex flex-col items-center gap-2">
+              <Link href="/login" className="flex flex-col items-center gap-2">
                 <Signin />
                 <span className="text-black">ورود | ثبت نام</span>
+                
               </Link>
             </div>
           </div>

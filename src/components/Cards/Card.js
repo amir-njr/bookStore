@@ -3,7 +3,7 @@ import { useAtom } from "jotai";
 // Icon
 import Dollar from "../icon/Dollar";
 // Function
-import { basketHandller, checkExistInArray } from "../shared/func/Function";
+import { basketHandller, checkExistInArray } from "../../../common/common";
 // Atom Basket Data
 import { basketData } from "../../../common/common";
 
@@ -28,11 +28,27 @@ export default function Card({ bookData }) {
 								console.log("ev.target", ev.target.id);
 								// // basket.selectedItem.map((item) => {
 
-								console.log("ITEM : ", bookData);
+								// console.log("ITEM : ", bookData);
 								if (basket.selectedItem.length > 0) {
 									basket.selectedItem.map((item) => {
-										if (+item.id === bookData.id) {
-											return;
+										if (+item.id == bookData.id) {
+											let tempitem = item;
+											tempitem.count
+												? (tempitem.count += 1)
+												: (tempitem.count = 2);
+											let actualitems = basket.selectedItem.filter(
+												(innerItem) => +innerItem.id !== +item.id
+											);
+											setBasket((prevState) => ({
+												...prevState,
+												selectedItem: [...actualitems, tempitem],
+											}));
+											console.log(
+												"tempitem : ",
+												tempitem,
+												"actual items : ",
+												actualitems
+											);
 										} else {
 											setBasket((prevState) => ({
 												...prevState,
