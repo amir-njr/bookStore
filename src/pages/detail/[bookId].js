@@ -14,7 +14,7 @@ export default function detail({ findItem }) {
 
 	return (
 		<HadrLayout>
-			<div className="my-20">
+			<div className="my-10">
 				<div className="flex justify-between items-center">
 					<h1 className="titr border-b-4 border-b-purple-600 py-2 my-4">
 						صفحه جزئیات

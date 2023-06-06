@@ -3,9 +3,9 @@ import { useAtom } from "jotai";
 // Icon
 import Dollar from "../icon/Dollar";
 // Function
-import { basketHandller } from "../shared/func/Function";
+import { basketHandller } from "../../../common/common";
 // Atom Basket Data
-import { basketData } from "../shared/func/Function";
+import { basketData } from "../../../common/common";
 
 export default function Card({ bookData }) {
   const [basket, setBasket] = useAtom(basketData);

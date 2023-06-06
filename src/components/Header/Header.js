@@ -4,7 +4,7 @@ import Link from "next/link";
 import Navbar from "../Navbar/Navbar";
 // Atom
 import { useAtom } from "jotai";
-import { basketData } from "../shared/func/Function";
+import { basketData } from "../../../common/common";
 // Icon
 import Basket from "../icon/Basket";
 import Signin from "../icon/Signin";
