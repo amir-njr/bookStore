@@ -1,11 +1,18 @@
 import Link from "next/link";
 // Icon
 import Dollar from "../icon/Dollar";
+<<<<<<< HEAD
 // Common
 import { isInArrayObject } from "../../../util/common";
 // Atom
 import { useAtom } from "jotai";
 import { BasketAtom } from "../../../lib/atom";
+=======
+// Function
+import { basketHandller, checkExistInArray } from "../../../common/common";
+// Atom Basket Data
+import { basketData } from "../../../common/common";
+>>>>>>> 1255d3163a987d80ce80e47b557612007f6940d8
 
 export default function Card({ bookData }) {
   const { title, price, image, id } = bookData;
@@ -14,11 +21,48 @@ export default function Card({ bookData }) {
   const [basket, setBasket] = useAtom(BasketAtom);
   console.log("d", basket);
 
+<<<<<<< HEAD
   const Add = (card) => {
     setBasket((currentValue) => ({
       selectedItems: [...currentValue.selectedItems, { ...card, count: 1 }],
     }));
   };
+=======
+								// console.log("ITEM : ", bookData);
+								if (basket.selectedItem.length > 0) {
+									basket.selectedItem.map((item) => {
+										if (+item.id == bookData.id) {
+											let tempitem = item;
+											tempitem.count
+												? (tempitem.count += 1)
+												: (tempitem.count = 2);
+											let actualitems = basket.selectedItem.filter(
+												(innerItem) => +innerItem.id !== +item.id
+											);
+											setBasket((prevState) => ({
+												...prevState,
+												selectedItem: [...actualitems, tempitem],
+											}));
+											console.log(
+												"tempitem : ",
+												tempitem,
+												"actual items : ",
+												actualitems
+											);
+										} else {
+											setBasket((prevState) => ({
+												...prevState,
+												selectedItem: [...prevState.selectedItem, bookData],
+											}));
+										}
+									});
+								} else {
+									setBasket((prevState) => ({
+										...prevState,
+										selectedItem: [...prevState.selectedItem, bookData],
+									}));
+								}
+>>>>>>> 1255d3163a987d80ce80e47b557612007f6940d8
 
   const Increase = (id) => {
     const newState = basket.selectedItems.map((item) => {

@@ -1,11 +1,19 @@
-// Image
+import Link from "next/link";
 import Image from "next/image";
-import loginPhoto from "../../../public/assets/img/login-photo.jpg"
-export default function LeftL () {
+// Image
+import loginPhoto from "../../../public/assets/img/login-photo.jpg";
+// Icon
+import Arrow from "../icon/Arrow";
+export default function LeftL() {
+	return (
+		<div className="flex justify-center">
+			<Link href={"/"}>
+        <div className="fixed left-20 top-20">
+				<Arrow />
 
-    return (
-        <div className="flex justify-center">
-            <Image src={loginPhoto} alt="Login Photo" className="w-[90%] h-full" />
         </div>
-    )
+			</Link>
+			<Image src={loginPhoto} alt="Login Photo" className="w-[90%] h-full" />
+		</div>
+	);
 }

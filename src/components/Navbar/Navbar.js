@@ -6,17 +6,17 @@ export default function Navbar() {
       <div className="container mx-auto py-2 flex">
         <ul className="flex gap-5 text-white text-lg basis-6/12">
           <li>
-            <Link className="hover:text-orange-400" href="#">
+            <Link className="hover:text-orange-400" href="/">
               خانه
             </Link>
           </li>
           <li>
-            <Link className="hover:text-orange-400" href="#">
+            <Link className="hover:text-orange-400" href="/aboutus">
               درباره ما
             </Link>
           </li>
           <li>
-            <Link className="hover:text-orange-400" href="#">
+            <Link className="hover:text-orange-400" href="/contactus">
               ارتباط با ما
             </Link>
           </li>

@@ -78,9 +78,10 @@ export default function Header() {
             </div>
 
             <div className="">
-              <Link href="#" className="flex flex-col items-center gap-2">
+              <Link href="/login" className="flex flex-col items-center gap-2">
                 <Signin />
                 <span className="text-black">ورود | ثبت نام</span>
+                
               </Link>
             </div>
           </div>
