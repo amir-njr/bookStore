@@ -4,13 +4,11 @@ import Link from "next/link";
 import Navbar from "../Navbar/Navbar";
 // Atom
 import { useAtom } from "jotai";
-import { basketData } from "../../../common/common";
 // Icon
 import Basket from "../icon/Basket";
 import Signin from "../icon/Signin";
 
 export default function Header() {
-  const [basket] = useAtom(basketData);
 
   return (
     <div>
@@ -71,9 +69,8 @@ export default function Header() {
           <div className="basis-4/12 justify-end flex gap-5 text-white">
             <div className="relative">
               <span className="h-4 w-4  bg-ghaleb-blue absolute top-3 right-2 flex justify-center items-center rounded-full">
-                {basket.counter}
               </span>
-              <Link href="#" className="flex flex-col items-center gap-2">
+              <Link href="/basket" className="flex flex-col items-center gap-2">
                 <Basket />
 
                 <span className="text-black">سبد خرید</span>

@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import bookData from "../shared/bookData/bookData";
 import Card from "./Card";
 
 export default function Cards() {
