@@ -1,11 +1,16 @@
+// Atom
+import { useAtom } from "jotai";
+import { BasketAtom } from "../../../lib/atom";
+// Common
+import { Decrease, Empty, Increase } from "../../../util/common";
+// Icons
 import Check from "../icon/Check";
 import Dollar from "../icon/Dollar";
 import RecycleBin from "../icon/RecycleBin";
 
 export default function Basket({ selected }) {
+  const [basket, setBasket] = useAtom(BasketAtom);
   const { title, price, image, id, count, subtitle } = selected;
-  const splited = title.split(" ");
-  console.log(selected);
 
   return (
     <div className="flex justify-between border-b-2 border-ghaleb-blue">
@@ -39,13 +44,35 @@ export default function Basket({ selected }) {
       </div>
       <div className="flex items-center">
         <div className="flex">
-          <button className="rounded-r-md h-10 w-10 font-bold text-white bg-blue-500 hover:bg-blue-600">
+          <button
+            onClick={() => {
+              setBasket((currentValue) => ({
+                ...currentValue,
+                selectedItems: [...Increase(basket, id)],
+              }));
+            }}
+            className="rounded-r-md h-10 w-10 font-bold text-white bg-blue-500 hover:bg-blue-600"
+          >
             +
           </button>
-          <button className="h-10 w-10 flex justify-center items-center text-white bg-red-500 hover:bg-red-600">
+          <button
+          onClick={() => {
+            setBasket((currentValue) => ({
+              ...currentValue,
+              selectedItems: [...Empty(basket, id)],
+            }));
+          }}
+          className="h-10 w-10 flex justify-center items-center text-white bg-red-500 hover:bg-red-600">
             <RecycleBin />
           </button>
-          <button className="rounded-l-md h-10 w-10 font-bold text-white bg-blue-500 hover:bg-blue-600">
+          <button
+          onClick={() => {
+            setBasket((currentValue) => ({
+              ...currentValue,
+              selectedItems: [...Decrease(basket, id)],
+            }));
+          }}
+          className="rounded-l-md h-10 w-10 font-bold text-white bg-blue-500 hover:bg-blue-600">
             -
           </button>
         </div>

@@ -11,8 +11,8 @@ import Signin from "../icon/Signin";
 export default function Header() {
 
   return (
-    <div>
-      <header className="">
+    <div className="bg-blue-50">
+      <header>
         <div className="container mx-auto flex items-center py-4">
           <div className="basis-4/12">
             <h1 className="text-6xl">شهر کتاب</h1>

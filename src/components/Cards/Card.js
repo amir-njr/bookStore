@@ -2,7 +2,7 @@ import Link from "next/link";
 // Icon
 import Dollar from "../icon/Dollar";
 // Common
-import { isInArrayObject } from "../../../util/common";
+import { Decrease, Increase, isInArrayObject } from "../../../util/common";
 // Atom
 import { useAtom } from "jotai";
 import { BasketAtom } from "../../../lib/atom";
@@ -16,40 +16,6 @@ export default function Card({ bookData }) {
   const Add = (card) => {
     setBasket((currentValue) => ({
       selectedItems: [...currentValue.selectedItems, { ...card, count: 1 }],
-    }));
-  };
-
-  const Increase = (id) => {
-    const newState = basket.selectedItems.map((item) => {
-      if (item.id === id) {
-        return { ...item, count: item.count + 1 };
-      }
-      console.log("count: ", basket.selectedItems[0].count);
-      return item;
-    });
-    setBasket((currentValue) => ({
-      ...currentValue,
-      selectedItems: [...newState],
-    }));
-  };
-
-  const Decrease = (id) => {
-    let newState = basket.selectedItems.map((item) => {
-      if (item.id === id) {
-        if (item.count === 1) {
-          return null;
-        } else {
-          return { ...item, count: item.count - 1 };
-        }
-      }
-      return item;
-    });
-    newState = newState.filter((item) => {
-      return item !== null;
-    });
-    setBasket((currentValue) => ({
-      ...currentValue,
-      selectedItems: [...newState],
     }));
   };
 
@@ -73,13 +39,18 @@ export default function Card({ bookData }) {
             ) : (
               <div className="flex">
                 <button
-                  onClick={() => Increase(id)}
+                  onClick={() => {
+                    setBasket((currentValue) => ({
+                      ...currentValue,
+                      selectedItems: [...Increase(basket, id)],
+                    }));
+                  }}
                   className="rounded-r-md h-10 w-10 font-bold text-white bg-blue-500 hover:bg-blue-600"
                 >
                   +
                 </button>
                 <button
-                  onClick={() => Decrease(id)}
+                  onClick={() => Decrease(basket, id)}
                   className="rounded-l-md border-r h-10 w-10 font-bold text-white bg-blue-500 hover:bg-blue-600"
                 >
                   -
