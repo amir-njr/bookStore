@@ -2,7 +2,7 @@ import Link from "next/link";
 // Icon
 import Dollar from "../icon/Dollar";
 // Common
-import { Decrease, Increase, isInArrayObject } from "../../../util/common";
+import { Decrease, Increase, isInArrayObject, sumItems } from "../../../util/common";
 // Atom
 import { useAtom } from "jotai";
 import { BasketAtom } from "../../../lib/atom";
@@ -16,7 +16,9 @@ export default function Card({ bookData }) {
   const Add = (card) => {
     setBasket((currentValue) => ({
       selectedItems: [...currentValue.selectedItems, { ...card, count: 1 }],
+      totalCount: card.count
     }));
+    // sumItems(basket.selectedItems)
   };
 
   return (
@@ -43,6 +45,7 @@ export default function Card({ bookData }) {
                     setBasket((currentValue) => ({
                       ...currentValue,
                       selectedItems: [...Increase(basket, id)],
+                      totalCount: sumItems(basket.selectedItems)
                     }));
                   }}
                   className="rounded-r-md h-10 w-10 font-bold text-white bg-blue-500 hover:bg-blue-600"
@@ -50,7 +53,13 @@ export default function Card({ bookData }) {
                   +
                 </button>
                 <button
-                  onClick={() => Decrease(basket, id)}
+                  onClick={() => {
+                    setBasket((currentValue) => ({
+                      ...currentValue,
+                      selectedItems: [...Decrease(basket, id)],
+                      totalCount: sumItems(basket.selectedItems)
+                    }));
+                  }}
                   className="rounded-l-md border-r h-10 w-10 font-bold text-white bg-blue-500 hover:bg-blue-600"
                 >
                   -

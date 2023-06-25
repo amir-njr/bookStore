@@ -33,6 +33,14 @@ export const Decrease = (state, id) => {
 export const Empty = (state, id) => {
   const { selectedItems } = state;
   const newState = selectedItems.filter((item) => item.id !== id);
-  console.log("Empty",newState)
   return newState;
+};
+
+export const sumItems = (items) => {
+  console.log(items)
+  const itemsCounter = items.reduce(
+    (total, item) => total + item.count, 0
+
+  );
+  return  itemsCounter ;
 };

@@ -2,7 +2,7 @@
 import { useAtom } from "jotai";
 import { BasketAtom } from "../../../lib/atom";
 // Common
-import { Decrease, Empty, Increase } from "../../../util/common";
+import { Decrease, Empty, Increase, sumItems } from "../../../util/common";
 // Icons
 import Check from "../icon/Check";
 import Dollar from "../icon/Dollar";
@@ -49,6 +49,7 @@ export default function Basket({ selected }) {
               setBasket((currentValue) => ({
                 ...currentValue,
                 selectedItems: [...Increase(basket, id)],
+                totalCount: sumItems(basket.selectedItems),
               }));
             }}
             className="rounded-r-md h-10 w-10 font-bold text-white bg-blue-500 hover:bg-blue-600"
@@ -56,23 +57,26 @@ export default function Basket({ selected }) {
             +
           </button>
           <button
-          onClick={() => {
-            setBasket((currentValue) => ({
-              ...currentValue,
-              selectedItems: [...Empty(basket, id)],
-            }));
-          }}
-          className="h-10 w-10 flex justify-center items-center text-white bg-red-500 hover:bg-red-600">
+            onClick={() => {
+              setBasket((currentValue) => ({
+                ...currentValue,
+                selectedItems: [...Empty(basket, id)],
+              }));
+            }}
+            className="h-10 w-10 flex justify-center items-center text-white bg-red-500 hover:bg-red-600"
+          >
             <RecycleBin />
           </button>
           <button
-          onClick={() => {
-            setBasket((currentValue) => ({
-              ...currentValue,
-              selectedItems: [...Decrease(basket, id)],
-            }));
-          }}
-          className="rounded-l-md h-10 w-10 font-bold text-white bg-blue-500 hover:bg-blue-600">
+            onClick={() => {
+              setBasket((currentValue) => ({
+                ...currentValue,
+                selectedItems: [...Decrease(basket, id)],
+                totalCount: sumItems(basket.selectedItems),
+              }));
+            }}
+            className="rounded-l-md h-10 w-10 font-bold text-white bg-blue-500 hover:bg-blue-600"
+          >
             -
           </button>
         </div>
