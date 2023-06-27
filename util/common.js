@@ -37,10 +37,15 @@ export const Empty = (state, id) => {
 };
 
 export const sumItems = (items) => {
-  console.log(items)
-  const itemsCounter = items.reduce(
-    (total, item) => total + item.count, 0
+  const itemsCounter = items.reduce((total, item) => total + item.count, 0);
+  return itemsCounter;
+};
 
-  );
-  return  itemsCounter ;
+export const minceItem = (state, id) => {
+  const itemsCounter = state.selectedItems.map((item) => {
+    if (item.id === id) {
+      return (state.totalCount = state.totalCount - item.count);
+    }
+  });
+  return itemsCounter;
 };

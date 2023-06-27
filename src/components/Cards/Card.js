@@ -16,9 +16,8 @@ export default function Card({ bookData }) {
   const Add = (card) => {
     setBasket((currentValue) => ({
       selectedItems: [...currentValue.selectedItems, { ...card, count: 1 }],
-      totalCount: card.count
+      totalCount: sumItems(basket.selectedItems)
     }));
-    // sumItems(basket.selectedItems)
   };
 
   return (

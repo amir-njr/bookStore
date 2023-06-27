@@ -5,8 +5,6 @@ import { useAtom } from "jotai";
 import Basket from "./Basket";
 // Link
 import Link from "next/link";
-// Common
-import { sumItems } from "../../../util/common";
 
 export default function Baskets() {
   const [basket] = useAtom(BasketAtom);

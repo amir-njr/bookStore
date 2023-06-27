@@ -2,7 +2,13 @@
 import { useAtom } from "jotai";
 import { BasketAtom } from "../../../lib/atom";
 // Common
-import { Decrease, Empty, Increase, sumItems } from "../../../util/common";
+import {
+  Decrease,
+  Empty,
+  Increase,
+  sumItems,
+  minceItem,
+} from "../../../util/common";
 // Icons
 import Check from "../icon/Check";
 import Dollar from "../icon/Dollar";
@@ -10,7 +16,7 @@ import RecycleBin from "../icon/RecycleBin";
 
 export default function Basket({ selected }) {
   const [basket, setBasket] = useAtom(BasketAtom);
-  const { title, price, image, id, count, subtitle } = selected;
+  const { title, price, image, id, count } = selected;
 
   return (
     <div className="flex justify-between border-b-2 border-ghaleb-blue">
@@ -61,6 +67,7 @@ export default function Basket({ selected }) {
               setBasket((currentValue) => ({
                 ...currentValue,
                 selectedItems: [...Empty(basket, id)],
+                totalCount: minceItem(basket , id),
               }));
             }}
             className="h-10 w-10 flex justify-center items-center text-white bg-red-500 hover:bg-red-600"
