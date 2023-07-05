@@ -1,3 +1,5 @@
+import { hash } from "bcryptjs";
+
 export const isInArrayObject = (array, id) => {
   return array.filter((elem) => elem.id === id);
 };
@@ -49,3 +51,9 @@ export const minceItem = (state, id) => {
   });
   return itemsCounter;
 };
+
+export async function hashPassword(password) {
+  const hashedPassword = await hash(password, 12);
+  console.log(hashedPassword);
+  return hashedPassword;
+}
