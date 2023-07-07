@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
 
-
 // Model
 import User from "../icon/User";
 // Atom
@@ -11,11 +10,12 @@ import { useAtom } from "jotai";
 // Icon
 
 export default function SignUp() {
-  const router = useRouter()
+  const router = useRouter();
   const [setting, setSetting] = useAtom(Setting);
   const [user, setUser] = useState({
     name: "",
     lastName: "",
+    nationalCode: "",
     phone: "",
     email: "",
     password: "",
@@ -23,19 +23,19 @@ export default function SignUp() {
 
   const changeHandler = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
-    console.log(user);
   };
 
   const postHandler = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const res = await fetch("api/auth/signup", {
       method: "POST",
       body: JSON.stringify({ user }),
       headers: { "Content-Type": "application/json" },
     });
     const json = await res.json();
-    if(json.status === "Success") {
-      router.push("/")
+    console.log(json)
+    if (json.status === "Success") {
+      // router.reload();
     }
   };
   return (
@@ -62,6 +62,15 @@ export default function SignUp() {
           placeholder="نام خانوادگی تان را وارد نمایید ..."
           type="text"
           name="lastName"
+        />
+
+        <input
+          value={user.nationalCode}
+          onChange={changeHandler}
+          className="border-r-4 border-r-blue-600 focus:outline-none focus:bg-slate-200 bg-slate-100 p-2"
+          placeholder="  کد ملی تان را وارد نمایید..."
+          type="number"
+          name="nationalCode"
         />
         <input
           value={user.phone}

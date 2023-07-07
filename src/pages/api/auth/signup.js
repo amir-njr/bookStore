@@ -6,15 +6,20 @@ export default async function handler(req, res) {
   await connectDB();
   if (req.method === "POST") {
     const userData = req.body.user;
-    const { name, lastName, email, password } = userData;
+    const { name, lastName, email, password, nationalCode } = userData;
 
-    if (!name || !lastName || !email || !password) {
+    if (!name || !lastName || !email || !password || !nationalCode) {
       return res
         .status(422)
         .json({ status: "Failed", message: "Invalid Data!!!" });
     }
+    if(nationalCode.length !== 10) {
+      return res
+        .status(422)
+        .json({ status: "Failed", message: "کد ملی درست وارد نشده است!" });
+    }
 
-    const isUserInDB = await User.findOne({ email: email });
+    const isUserInDB = await User.findOne({ nationalCode: nationalCode });
     if (isUserInDB) {
       return res
         .status(422)
@@ -25,6 +30,7 @@ export default async function handler(req, res) {
     userData.password = hashedPassword;
 
     const newUser = await User.create(userData);
+    console.log("ddddddddddd",newUser)
     res
       .status(201)
       .json({ status: "Success", message: "ثبت نام با موفقیت انجام شد" });

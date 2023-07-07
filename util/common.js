@@ -1,4 +1,4 @@
-import { hash } from "bcryptjs";
+import { compare, hash } from "bcryptjs";
 
 export const isInArrayObject = (array, id) => {
   return array.filter((elem) => elem.id === id);
@@ -54,6 +54,10 @@ export const minceItem = (state, id) => {
 
 export async function hashPassword(password) {
   const hashedPassword = await hash(password, 12);
-  console.log(hashedPassword);
   return hashedPassword;
+}
+
+export async function verifyPassword(password , hashedPassword) {
+  const isInPassword = await compare(password, hashedPassword);
+  return isInPassword;
 }
