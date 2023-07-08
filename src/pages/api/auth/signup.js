@@ -30,7 +30,6 @@ export default async function handler(req, res) {
     userData.password = hashedPassword;
 
     const newUser = await User.create(userData);
-    console.log("ddddddddddd",newUser)
     res
       .status(201)
       .json({ status: "Success", message: "ثبت نام با موفقیت انجام شد" });

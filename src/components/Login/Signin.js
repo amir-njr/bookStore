@@ -1,5 +1,5 @@
 // Hook
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 // Link
 import Link from "next/link";
@@ -10,7 +10,16 @@ import { useAtom } from "jotai";
 import User from "../icon/User";
 
 export default function SignIn() {
-  const router = useRouter()
+  const router = useRouter();
+
+  useEffect(() => {
+    fetch("/api/user")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status === "Success") window.location.href = "/dashboard";
+      });
+  }, []);
+
   const [setting, setSetting] = useAtom(Setting);
   const clickHandler = () => {
     setSetting({ ...setting, loginToggle: !setting.loginToggle });
@@ -33,9 +42,9 @@ export default function SignIn() {
       headers: { "Content-Type": "application/json" },
     });
     const json = await res.json();
-    console.log(json)
+    console.log(json);
     if (json.status === "Success") {
-      router.push("/");
+      router.push("/dashboard");
     }
   };
 
@@ -87,7 +96,6 @@ export default function SignIn() {
           <button
             onClick={postHandler}
             className="bg-lime-500 w-28 text-center rounded-md py-2 hover:bg-lime-600 transition-all"
-            href="#"
           >
             ارسال
           </button>

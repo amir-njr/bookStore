@@ -1,4 +1,5 @@
 import { compare, hash } from "bcryptjs";
+import { verify } from "jsonwebtoken";
 
 export const isInArrayObject = (array, id) => {
   return array.filter((elem) => elem.id === id);
@@ -57,7 +58,17 @@ export async function hashPassword(password) {
   return hashedPassword;
 }
 
-export async function verifyPassword(password , hashedPassword) {
+export async function verifyPassword(password, hashedPassword) {
   const isInPassword = await compare(password, hashedPassword);
+  return isInPassword;
+}
+
+export function verifyToken(token, secretKey) {
+  try {
+    const result = verify(token, secretKey);
+    return {nationalCode : result.nationalCode}
+  } catch {
+    return false;
+  }
   return isInPassword;
 }

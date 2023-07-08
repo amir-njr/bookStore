@@ -5,14 +5,14 @@ import Aside from "../Dashboard/Aside";
 import DashboardHeader from "../Dashboard/DashboardHeader";
 
 export default function DshdLayout({ children }) {
-  const [setting, setSetting] = useAtom(Setting);
+  const [setting] = useAtom(Setting);
   const { asideToggle } = setting;
   return (
       <section className="flex gap-3">
         <div
           className={`${
             asideToggle ? "basis-1/12" : "basis-2/12"
-          } transition-all`}
+          } transition-all h-[100vh] bg-blue-50 rounded-l-md overflow-hidden`}
         >
           <Aside />
         </div>

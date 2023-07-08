@@ -5,15 +5,14 @@ import loginPhoto from "../../../public/assets/img/login-photo.jpg";
 // Icon
 import Arrow from "../icon/Arrow";
 export default function LeftL() {
-	return (
-		<div className="flex justify-center">
-			<Link href={"/"}>
+  return (
+    <div className="flex justify-center">
+      <Link href="/">
         <div className="fixed left-20 top-20">
-				<Arrow />
-
+          <Arrow />
         </div>
-			</Link>
-			<Image src={loginPhoto} alt="Login Photo" className="w-[90%] h-full" />
-		</div>
-	);
+      </Link>
+      <Image src={loginPhoto} alt="Login Photo" className="w-[90%] h-full" />
+    </div>
+  );
 }

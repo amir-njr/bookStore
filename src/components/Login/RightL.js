@@ -1,5 +1,3 @@
-// Icon
-import User from "../icon/User";
 // Atom
 import { Setting } from "../../../lib/atom";
 import { useAtom } from "jotai";
@@ -8,6 +6,8 @@ import SignIn from "./Signin";
 import SignUp from "./Signup";
 
 export default function RightL() {
+  
+
   const [setting] = useAtom(Setting);
 
   return (
